@@ -1,0 +1,227 @@
+schema: paperclip/v1
+agents:
+  cto:
+    runtime:
+      heartbeat:
+        enabled: false
+        intervalSec: 300
+        maxConcurrentRuns: 1
+        wakeOnOnDemand: true
+    adapter:
+      type: opencode_local
+      config:
+        model: deepseek/deepseek-v4-flash-0731
+        env:
+          PAPERCLIP_OPENCODE_PROVIDERS:
+            type: plain
+            value: '{"deepseek":{"npm":"@ai-sdk/openai-compatible","name":"OpenRouter
+              DeepSeek","options":{"baseURL":"https://openrouter.ai/api/v1","apiKey":"{env:OPENROUTER_API_KEY}"},"models":{"deepseek-v4-flash-0731":{"id":"deepseek/deepseek-v4-flash-0731"}}}}'
+          PAPERCLIP_OPENCODE_SMALL_MODEL:
+            type: plain
+            value: deepseek/deepseek-v4-flash-0731
+          HOME:
+            type: plain
+            value: /paperclip
+          PATH:
+            type: plain
+            value: /paperclip/.local/bin:/paperclip/.asdf/shims:/paperclip/.asdf/bin:/usr/local/bin:/usr/bin:/bin
+    inputs:
+      env:
+        OPENROUTER_API_KEY:
+          kind: secret
+          requirement: required
+        GH_TOKEN:
+          kind: secret
+          requirement: required
+  problem-gatherer:
+    adapter:
+      type: opencode_local
+      config:
+        model: deepseek/deepseek-v4-flash-0731
+        env:
+          PAPERCLIP_OPENCODE_PROVIDERS:
+            type: plain
+            value: '{"deepseek":{"npm":"@ai-sdk/openai-compatible","name":"OpenRouter
+              DeepSeek","options":{"baseURL":"https://openrouter.ai/api/v1","apiKey":"{env:OPENROUTER_API_KEY}"},"models":{"deepseek-v4-flash-0731":{"id":"deepseek/deepseek-v4-flash-0731"}}}}'
+          PAPERCLIP_OPENCODE_SMALL_MODEL:
+            type: plain
+            value: deepseek/deepseek-v4-flash-0731
+          HOME:
+            type: plain
+            value: /paperclip
+          PATH:
+            type: plain
+            value: /paperclip/.local/bin:/paperclip/.asdf/shims:/paperclip/.asdf/bin:/usr/local/bin:/usr/bin:/bin
+    inputs:
+      env:
+        OPENROUTER_API_KEY:
+          kind: secret
+          requirement: required
+        AOC_SESSION:
+          kind: secret
+          requirement: required
+        GH_TOKEN:
+          kind: secret
+          requirement: required
+    runtime:
+      heartbeat:
+        enabled: false
+        maxConcurrentRuns: 1
+  problem-solver:
+    adapter:
+      type: opencode_local
+      config:
+        model: deepseek/deepseek-v4-pro-0813
+        env:
+          PAPERCLIP_OPENCODE_PROVIDERS:
+            type: plain
+            value: '{"deepseek":{"npm":"@ai-sdk/openai-compatible","name":"OpenRouter
+              DeepSeek","options":{"baseURL":"https://openrouter.ai/api/v1","apiKey":"{env:OPENROUTER_API_KEY}"},"models":{"deepseek-v4-pro-0813":{"id":"deepseek/deepseek-v4-pro-0813"}}}}'
+          PAPERCLIP_OPENCODE_SMALL_MODEL:
+            type: plain
+            value: deepseek/deepseek-v4-pro-0813
+          HOME:
+            type: plain
+            value: /paperclip
+          PATH:
+            type: plain
+            value: /paperclip/.local/bin:/paperclip/.asdf/shims:/paperclip/.asdf/bin:/usr/local/bin:/usr/bin:/bin
+    inputs:
+      env:
+        OPENROUTER_API_KEY:
+          kind: secret
+          requirement: required
+        GH_TOKEN:
+          kind: secret
+          requirement: required
+    runtime:
+      heartbeat:
+        enabled: false
+        maxConcurrentRuns: 1
+  problem-submitter:
+    adapter:
+      type: opencode_local
+      config:
+        model: deepseek/deepseek-v4-flash-0731
+        env:
+          PAPERCLIP_OPENCODE_PROVIDERS:
+            type: plain
+            value: '{"deepseek":{"npm":"@ai-sdk/openai-compatible","name":"OpenRouter
+              DeepSeek","options":{"baseURL":"https://openrouter.ai/api/v1","apiKey":"{env:OPENROUTER_API_KEY}"},"models":{"deepseek-v4-flash-0731":{"id":"deepseek/deepseek-v4-flash-0731"}}}}'
+          PAPERCLIP_OPENCODE_SMALL_MODEL:
+            type: plain
+            value: deepseek/deepseek-v4-flash-0731
+          HOME:
+            type: plain
+            value: /paperclip
+          PATH:
+            type: plain
+            value: /paperclip/.local/bin:/paperclip/.asdf/shims:/paperclip/.asdf/bin:/usr/local/bin:/usr/bin:/bin
+    inputs:
+      env:
+        OPENROUTER_API_KEY:
+          kind: secret
+          requirement: required
+        AOC_SESSION:
+          kind: secret
+          requirement: required
+    runtime:
+      heartbeat:
+        enabled: false
+        maxConcurrentRuns: 1
+  solution-reviewer:
+    adapter:
+      type: opencode_local
+      config:
+        model: deepseek/deepseek-v4-flash-0731
+        env:
+          PAPERCLIP_OPENCODE_PROVIDERS:
+            type: plain
+            value: '{"deepseek":{"npm":"@ai-sdk/openai-compatible","name":"OpenRouter
+              DeepSeek","options":{"baseURL":"https://openrouter.ai/api/v1","apiKey":"{env:OPENROUTER_API_KEY}"},"models":{"deepseek-v4-flash-0731":{"id":"deepseek/deepseek-v4-flash-0731"}}}}'
+          PAPERCLIP_OPENCODE_SMALL_MODEL:
+            type: plain
+            value: deepseek/deepseek-v4-flash-0731
+          HOME:
+            type: plain
+            value: /paperclip
+          PATH:
+            type: plain
+            value: /paperclip/.local/bin:/paperclip/.asdf/shims:/paperclip/.asdf/bin:/usr/local/bin:/usr/bin:/bin
+    inputs:
+      env:
+        OPENROUTER_API_KEY:
+          kind: secret
+          requirement: required
+        GH_TOKEN:
+          kind: secret
+          requirement: required
+    runtime:
+      heartbeat:
+        enabled: false
+        maxConcurrentRuns: 1
+  watchdog:
+    runtime:
+      heartbeat:
+        enabled: false
+        intervalSec: 600
+        maxConcurrentRuns: 1
+        wakeOnDemand: false
+        wakeOnAssignment: false
+        wakeOnOnDemand: false
+        wakeOnAutomation: false
+    adapter:
+      type: opencode_local
+      config:
+        model: deepseek/deepseek-v4-flash-0731
+        env:
+          PAPERCLIP_OPENCODE_PROVIDERS:
+            type: plain
+            value: '{"deepseek":{"npm":"@ai-sdk/openai-compatible","name":"OpenRouter
+              DeepSeek","options":{"baseURL":"https://openrouter.ai/api/v1","apiKey":"{env:OPENROUTER_API_KEY}"},"models":{"deepseek-v4-flash-0731":{"id":"deepseek/deepseek-v4-flash-0731"}}}}'
+          PAPERCLIP_OPENCODE_SMALL_MODEL:
+            type: plain
+            value: deepseek/deepseek-v4-flash-0731
+          AOC_PAPERCLIP_UI_URL:
+            type: plain
+            value: https://paperclip.tritsch.org/AOC
+          HOME:
+            type: plain
+            value: /paperclip
+          PATH:
+            type: plain
+            value: /paperclip/.local/bin:/paperclip/.asdf/shims:/paperclip/.asdf/bin:/usr/local/bin:/usr/bin:/bin
+        timeoutSec: 120
+    inputs:
+      env:
+        OPENROUTER_API_KEY:
+          kind: secret
+          requirement: required
+  model-tester:
+    adapter:
+      type: opencode_local
+      config:
+        model: deepseek/deepseek-v4-flash-0731
+        env:
+          PAPERCLIP_OPENCODE_PROVIDERS:
+            type: plain
+            value: '{"deepseek":{"npm":"@ai-sdk/openai-compatible","name":"OpenRouter
+              DeepSeek","options":{"baseURL":"https://openrouter.ai/api/v1","apiKey":"{env:OPENROUTER_API_KEY}"},"models":{"deepseek-v4-flash-0731":{"id":"deepseek/deepseek-v4-flash-0731"}}}}'
+          PAPERCLIP_OPENCODE_SMALL_MODEL:
+            type: plain
+            value: deepseek/deepseek-v4-flash-0731
+          HOME:
+            type: plain
+            value: /paperclip
+          PATH:
+            type: plain
+            value: /paperclip/.local/bin:/paperclip/.asdf/shims:/paperclip/.asdf/bin:/usr/local/bin:/usr/bin:/bin
+    inputs:
+      env:
+        OPENROUTER_API_KEY:
+          kind: secret
+          requirement: required
+    runtime:
+      heartbeat:
+        enabled: false
+        maxConcurrentRuns: 1

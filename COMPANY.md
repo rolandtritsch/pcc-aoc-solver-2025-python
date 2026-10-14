@@ -1,0 +1,42 @@
+---
+name: AoC Solver 2025 Python
+description: Advent of Code 2025 Python solver squad with CTO-controlled part-by-part progress and evidence-driven solution review.
+slug: aoc-solver-2025-python
+schema: agentcompanies/v1
+version: 0.1.0
+license: MIT
+authors:
+  - name: Roland Tritsch
+goals:
+  - Complete both parts of Advent of Code 2025 through Day12, including the final completion interaction
+  - Produce tested, idiomatic, docstrings-documented Python solutions
+  - Authorize one part per CTO wake-up, in increasing day and part order
+  - Review every final verdict and commit validated reusable skills and scripts in python-aoc-2025
+---
+
+AoC Solver 2025 Python works through [Advent of Code 2025][aoc] in the
+[python-aoc-2025][repo] repository. The CTO first waits for all current-cycle work and its successful review to
+complete. Only then does a manual or timer wake select one unfinished part from
+`uv run --locked solve` and `uv run --locked pytest -v` on the synchronized repository. Pre-cycle history is
+informational; current-cycle review completion gates advancement. ProblemGatherer obtains
+missing material, ProblemSolver implements the assigned part, and
+ProblemSubmitter submits its verified answer.
+SolutionReviewer examines every accepted or rejected attempt and implements
+validated workflow improvements. Review ends the cycle; only a later CTO wake-up
+may authorize another part after successful review, or the same part after a
+completed rejection review. No later part starts while the current review is
+unfinished.
+
+The order is Day01 part1, Day01 part2, Day02 part1, and so on through Day12.
+The final day's completion interaction follows the authenticated site rather
+than an invented computational answer. Existing verified acceptances are retained.
+The CTO heartbeat interval is five minutes; it starts **paused** and is enabled
+only explicitly.
+Model Tester remains a manually assigned probe outside the puzzle pipeline.
+WatchDog has no manager and observes all agents every ten minutes when enabled.
+Its deterministic runner creates one completed self-assigned report per timer
+run, with optional Flash interpretation of new anomalies, and takes no corrective
+actions. Its reporting tasks are outside the puzzle pipeline.
+
+[aoc]: https://adventofcode.com/2025
+[repo]: https://github.com/rolandtritsch/python-aoc-2025
