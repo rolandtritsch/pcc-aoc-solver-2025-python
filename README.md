@@ -107,3 +107,11 @@ through `.claude/skills/` and `.agents/skills/` symlinks.
 [WatchDog]: skills/aoc-watchdog/SKILL.md
 [infra]: https://github.com/rolandtritsch/pulumi-paperclip
 [deployment]: docs/deployment.md
+
+## Season completion
+
+The 2025 edition ends at Day12. Once all 24 day/part reviews in the current
+cycle are accepted with no repair required, the CTO gate returns `complete` and
+the launcher exits successfully before inference. No further gatherer task or
+Day13 work starts. The Day12 finale is verified through authenticated site
+evidence and review, without requiring a fabricated numerical answer.
