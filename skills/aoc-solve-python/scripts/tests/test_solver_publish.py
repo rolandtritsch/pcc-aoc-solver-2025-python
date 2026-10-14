@@ -88,6 +88,14 @@ class PublicationTest(unittest.TestCase):
         self.assertEqual(gate.git(self.repo, "rev-parse", "HEAD"), self.base)
         self.assertEqual(gate.git(self.remote, "rev-parse", "main"), self.base)
 
+    def test_runner_integration_tests_can_be_published_with_runner_changes(self):
+        self.files.append("tests/test_main.py")
+        (self.repo / "tests/test_main.py").write_text("unformatted\n")
+        with patch.object(gate, "command", self.builder):
+            evidence = gate.publish(self.repo, 10, 1, "417", self.files)
+        self.assertEqual(gate.git(self.repo, "show", "HEAD:tests/test_main.py"), "formatted")
+        gate.parity(self.repo, evidence["commit"])
+
     def test_foreign_work_is_preserved_and_blocks_commit(self):
         (self.repo / "other.txt").write_text("another agent's work\n")
         with self.assertRaises(gate.GateError):

@@ -40,7 +40,10 @@ python3 <skill-base>/scripts/aoc_solver_publish.py publish \
 ```
 
 The helper uses injected `AOC_REPO_DIR` and Paperclip task/run credentials.
-Default intended files are the day module, test module, sample input, and runner.
+Default intended files are the day module, test module, sample input, runner,
+and runner integration tests (`tests/test_main.py`). Extend the runner tests'
+exact expected output when adding a part; retain the Day00 and prior-part
+assertions. Do not remove or weaken those assertions to accommodate new output.
 Use `--files` for an exact subset when a default file is absent or unintended.
 Only intended files may be dirty or staged. Gatherer owns personal inputs and
 problem statements. Additional assets or dependency changes need a reviewed

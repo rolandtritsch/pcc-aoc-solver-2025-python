@@ -137,7 +137,7 @@ def publish(repo, day, part, answer, files):
     allowed = {f"src/aoc2025/day{day:02}.py",
                f"tests/test_day{day:02}.py",
                f"inputs/Day{day:02}Test.txt",
-               "src/aoc2025/main.py"}
+               "src/aoc2025/main.py", "tests/test_main.py"}
     if not files or not set(files) <= allowed:
         raise GateError("Only assigned solution/test/sample/Main files may be committed")
     for name in files:
@@ -302,7 +302,7 @@ def main(argv=None):
             files = args.files or [f"src/aoc2025/day{args.day:02}.py",
                                   f"tests/test_day{args.day:02}.py",
                                   f"inputs/Day{args.day:02}Test.txt",
-                                  "src/aoc2025/main.py"]
+                                  "src/aoc2025/main.py", "tests/test_main.py"]
             evidence = publish(repo, args.day, args.part, args.answer, files)
             # The only creation call is after checks, commit, push, and remote parity.
             parity(repo, evidence["commit"])
