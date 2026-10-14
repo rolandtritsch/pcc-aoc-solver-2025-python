@@ -48,6 +48,8 @@ Each company has its own vault references to the existing AWS-backed credentials
 `OPENROUTER_API_KEY`, `AOC_SESSION` for gatherer/submitter, and `GH_TOKEN` for agents
 that use GitHub. Values stay in AWS Secrets Manager, managed by
 [pulumi-paperclip][infra]. Never reuse Scala-company vault IDs or copy credentials.
+Declarations are optional during import so existing external references can be
+bound afterward; deployment must verify all required bindings before activation.
 
 The same AoC account can have accepted Scala answers. Python solving and testing
 remain independent. Matching existing acceptance is confirmed without reposting;
