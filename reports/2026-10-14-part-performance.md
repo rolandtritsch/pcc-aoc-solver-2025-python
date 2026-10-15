@@ -78,6 +78,31 @@ Day05 part1 (1,326,648), Day04 part2 (1,001,721).
 Largest fresh-input runs: Day03 part2 (472,212), Day02 part2 (149,647),
 Day01 part1 final (131,624).
 
+## Token outlier — Day03 part2 (AOCA-33)
+
+Added 2026-10-15, from the Days01–09 comparison
+([per-part CSV](2026-10-15-part-performance-days01-09.csv)) and the solver task
+(https://paperclip.tritsch.org/AOCA/issues/AOCA-33, run
+`d950b496-9f66-48bb-aa0f-a3977c4dfe0d`).
+
+Day03 part2's solver run recorded **472,212 fresh input tokens**, 2.1× the
+next-highest solver run (223,019, Day07 part1). Its fresh/cache ratio is
+**1.31** — the only solver run in either language where fresh exceeds cached
+(next-highest: 0.48). Duration (383s) and output (15,002) are ordinary, so the
+model was not reasoning long; it was ingesting new context with poor cache
+reuse.
+
+The task explains it: the 12-digit monotonic-stack subsequence, cross-checked
+per the solver handoff comment against **exhaustive combinations brute force on
+all four sample banks plus 2000 random banks**. That verification output floods
+the context as fresh tokens on every step instead of hitting cache.
+
+Contrast with the Scala outlier, Day09 part2 (AOC-190): a *scale* outlier
+(3.47M total, 59k output, 621s, normal 0.17 fresh/cache ratio) from the hardest
+part's long verification chain, not context churn. Both outliers bought accepted
+solutions — Python Day03p2 scores 5.0, Scala Day09p2 4.4 in the code-quality
+ratings — so the tokens bought correctness, just inefficiently.
+
 ## Evidence and reproducibility
 
 - [Per-part CSV](2026-10-14-part-performance.csv): exact UTC timestamps,
